@@ -22,21 +22,21 @@ public class Blogcontroller {
         return all;
     }
 
-    @GetMapping("/blog/{genre}")
+    @GetMapping("/blog/genre/{genre}")
     public ArrayList<Blog> blogGenre(@PathVariable String genre)
     {
         ArrayList<Blog> some= s.sendBlogGenre(genre);
         return some;
     }
 
-    @GetMapping("/blog/{title}")
+    @GetMapping("/blog/title/{title}")
     public Blog blogtitle(@PathVariable String title)
     {
         Blog blogt=s.sendBlogTitle(title);
         return blogt;
     }
 
-    @GetMapping("/blog/{id}")
+    @GetMapping("/blog/id/{id}")
     public Optional<Blog> Blogid(@PathVariable int id)
     {
         Optional<Blog> blogid=s.sendBlogId(id);

@@ -13,13 +13,9 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.AUTO)
     int blog_id;
     String title;
+    @Column(columnDefinition = "TEXT")
     String content;
     String genre;
     LocalDateTime createdAt = LocalDateTime.now();
-
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
 }

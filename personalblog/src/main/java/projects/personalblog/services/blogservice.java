@@ -38,7 +38,7 @@ public class blogservice {
         newblog.setGenre(blog.getGenre());
         newblog.setContent(blog.getContent());
         newblog.setCreatedAt(LocalDateTime.now());
-        r.save(newblog);*/
+        r.save(newblog)*/
     }
 
     public Blog sendBlogTitle(String title) {
