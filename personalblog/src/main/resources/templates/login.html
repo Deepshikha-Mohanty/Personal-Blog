@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog Login</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%9D%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<button type="button" class="icon-btn theme-toggle-floating" data-theme-toggle aria-label="Toggle theme"></button>
+
+<div class="auth-shell">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="auth-card surface page-fade">
+        <div class="auth-mark">📝</div>
+        <h2>Welcome back</h2>
+        <p class="subtitle">Sign in to manage your blog</p>
+
+        <!-- Error Message: shown if username, password, or both are wrong -->
+        <div th:if="${param.error}" class="alert alert-error">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Invalid username or password</span>
+        </div>
+
+        <!-- Logout confirmation -->
+        <div th:if="${param.logout}" class="alert alert-success">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>You have been logged out.</span>
+        </div>
+
+        <form th:action="@{/login}" method="post">
+
+            <!-- CSRF Token -->
+            <input type="hidden"
+                   th:name="${_csrf.parameterName}"
+                   th:value="${_csrf.token}" />
+
+            <div class="field">
+                <label for="username">Username</label>
+                <input class="input" type="text" id="username" name="username"
+                       placeholder="Enter username" autocomplete="username"
+                       autofocus required>
+            </div>
+
+            <div class="field">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <input class="input" type="password" id="password" name="password"
+                           placeholder="Enter password" autocomplete="current-password" required
+                           style="padding-right: 60px;">
+                    <button type="button" class="input-icon-btn" data-toggle-password="password">SHOW</button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+
+        </form>
+    </div>
+</div>
+
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>
